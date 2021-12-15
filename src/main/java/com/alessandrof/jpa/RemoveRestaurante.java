@@ -6,23 +6,21 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 
 import com.alessandrof.AlgafoodApiApplication;
-import com.alessandrof.domain.models.Cozinha;
-import com.alessandrof.domain.repository.CozinhaRepository;
+import com.alessandrof.domain.models.Restaurante;
+import com.alessandrof.domain.repository.RestaurantRepository;
 
-public class RemoveKitchen {
+public class RemoveRestaurante {
 
 	public static void main(String[] args) {
 		
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
 				.web(WebApplicationType.NONE).run(args);
 			
-		CozinhaRepository cozinhaRepository = applicationContext.getBean(CozinhaRepository.class);
+		RestaurantRepository restRepository = applicationContext.getBean(RestaurantRepository.class);
 		
-		Cozinha kitchen = new Cozinha();
-		kitchen.setId(1L);
+		Restaurante obj = restRepository.findById(1L);
 		
-		cozinhaRepository.remove(kitchen);
-		
+		restRepository.remote(obj);
 		
 	}
 

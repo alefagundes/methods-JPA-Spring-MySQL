@@ -7,6 +7,7 @@ import org.springframework.context.ApplicationContext;
 
 import com.alessandrof.AlgafoodApiApplication;
 import com.alessandrof.domain.models.Cozinha;
+import com.alessandrof.domain.repository.CozinhaRepository;
 
 public class AddCozinha {
 
@@ -15,14 +16,14 @@ public class AddCozinha {
 		ApplicationContext applicationContext = new SpringApplicationBuilder(AlgafoodApiApplication.class)
 				.web(WebApplicationType.NONE).run(args);
 			
-		CadastroCozinha cadastroCozinha = applicationContext.getBean(CadastroCozinha.class);
+		CozinhaRepository cozinhaRepository = applicationContext.getBean(CozinhaRepository.class);
 		
 		Cozinha kitchen1 = new Cozinha(null, "maxican");
 		
 		Cozinha kitchen2 = new Cozinha(null, "japonese");
 		
-		cadastroCozinha.save(kitchen1);
-		cadastroCozinha.save(kitchen2);
+		cozinhaRepository.save(kitchen1);
+		cozinhaRepository.save(kitchen2);
 		
 	}
 
